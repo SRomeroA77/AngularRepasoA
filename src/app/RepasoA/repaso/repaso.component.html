@@ -1,0 +1,29 @@
+<p>repaso works!</p>
+<h1>Administracion de articulos</h1>
+<table [border]="border" *ngIf="hayRegistros(); else sinarticulos">
+    <tr>
+        <td>Código</td><td>Descripcion</td><td>Precio</td><td>Borrar</td><td>Seleccionar</td>
+    </tr>
+    <tr *ngFor="let art of articulos">
+        <td>{{art.codigo}}</td>
+        <td>{{art.descripcion}}</td>
+        <td>{{art.precio}}</td>
+        <td><button (click)="borrar(art)">Borrar</button></td>
+        <td><button (click)="seleccionar(art)">Seleccionar</button></td>
+    </tr>
+</table>
+<ng-template #sinarticulos><p>No hay articulos</p></ng-template>
+
+<div>
+    <label>
+        Código: <input type="number" [(ngModel)]="art.codigo"/>
+    </label>
+    <label>
+        Descripcion: <input type="text" [(ngModel)]="art.descripcion"/>
+    </label>
+    <label>
+        Precio: <input type="number" [(ngModel)]="art.precio"/>
+    </label>
+    <p><button (click)="agregar()">Agregar</button></p>
+    <p><button (click)="modificar()">Modificar</button></p>
+</div>
